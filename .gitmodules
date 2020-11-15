@@ -1,0 +1,3 @@
+[submodule "bmfdec"]
+	path = bmfdec
+	url = https://github.com/aymanbagabas/bmf2mof.wasm.git
