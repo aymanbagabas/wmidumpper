@@ -3,6 +3,10 @@ const ACPI_WMI_METHOD = 0x2	/* GUID is a method */
 const ACPI_WMI_STRING = 0x4	/* GUID takes & returns a string */
 const ACPI_WMI_EVENT = 0x8	/* GUID is an event */
 
+const Flags = {
+  ACPI_WMI_EXPENSIVE, ACPI_WMI_METHOD, ACPI_WMI_STRING, ACPI_WMI_EVENT
+}
+
 class GuidBlock {
   guid
   object_id
@@ -33,7 +37,12 @@ class GuidBlock {
   }
 
   getFlags() {
-    return this.flags.toString(16).padStart(2, '0')
+    const flags = parseInt(this.flags, 16)
+    return flags === 0 ? '0x00' : Object.keys(Flags).map(flag => {
+      if (flags & Flags[flag]) {
+        return `${flag}(0x${Flags[flag].toString(16)})`
+      }
+    }).filter(v => !!v).join(' | ').padStart(2, '0')
   }
 
   toString() {
