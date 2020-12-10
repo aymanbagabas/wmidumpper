@@ -133,9 +133,8 @@ function bmfsubmit(event) {
     }
   }).then(module => {
 
-    const nByte = 2
     function arrayToPtr(array) {
-      var ptr = module._malloc(array.length * nByte)
+      var ptr = module._malloc(array.length)
       module.HEAPU8.set(array, ptr)
       return ptr
     }
