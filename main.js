@@ -21,7 +21,8 @@ class GuidBlock {
   }
 
   getGuid() {
-    return `${this.guid[3].toString(16).padStart(2, '0') + this.guid[2].toString(16).padStart(2, '0') + this.guid[1].toString(16).padStart(2, '0') + this.guid[0].toString(16).padStart(2, '0')}-${this.guid[5].toString(16).padStart(2, '0') + this.guid[4].toString(16).padStart(2, '0')}-${this.guid[7].toString(16).padStart(2, '0') + this.guid[6].toString(16).padStart(2, '0')}-${this.guid[8].toString(16).padStart(2, '0') + this.guid[9].toString(16).padStart(2, '0')}-${this.guid.slice(10).map(hex => hex.toString(16).padStart(2, '0')).join('')}`
+    const guid = Array.from(this.guid)
+    return `${guid[3].toString(16).padStart(2, '0') + guid[2].toString(16).padStart(2, '0') + guid[1].toString(16).padStart(2, '0') + guid[0].toString(16).padStart(2, '0')}-${guid[5].toString(16).padStart(2, '0') + guid[4].toString(16).padStart(2, '0')}-${guid[7].toString(16).padStart(2, '0') + guid[6].toString(16).padStart(2, '0')}-${guid[8].toString(16).padStart(2, '0') + guid[9].toString(16).padStart(2, '0')}-${guid.slice(10).map(hex => hex.toString(16).padStart(2, '0')).join('')}`.toUpperCase()
   }
 
   getNotifyId() {
